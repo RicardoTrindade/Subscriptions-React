@@ -1,0 +1,19 @@
+overwrite: true
+schema: ${CODEGEN_SCHEMA_PATH:../CableQL/doc/graphql/schema.graphql}
+documents:
+  - "src/apollo/graphql/**/*.graphql"
+generates:
+  src/apollo/generated/api.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo:
+          addDocBlocks: false
+    config:
+      apolloClientVersion: 3
+      scalars:
+        Date: string
+        DateTime: string
+        ISO8601DateTime: string
+        Time: string
+        JSON: string
